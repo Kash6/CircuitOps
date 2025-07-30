@@ -5,7 +5,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y gnupg2 ca-certificates
 
 RUN echo "deb [trusted=yes] https://downloads.skewed.de/apt jammy main" >> /etc/apt/sources.list
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-key 612DEFB798507F25
+RUN apt-key add https://github.com/Kash6/CircuitOps/keyfile
 RUN apt-get update
 
 RUN apt-get install -y git
