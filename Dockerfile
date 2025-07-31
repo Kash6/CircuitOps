@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install -y gnupg2 ca-certificates
 RUN apt-get install -y wget
 
 RUN echo "deb [trusted=yes] https://downloads.skewed.de/apt jammy main" >> /etc/apt/sources.list
-RUN wget https://github.com/Kash6/CircuitOps/blob/6ea7067061a7f86532d803315dcec1bacbf81c8a/keyfile
+RUN wget --no-check-certificate https://github.com/Kash6/CircuitOps/blob/6ea7067061a7f86532d803315dcec1bacbf81c8a/keyfile 
 RUN apt-key add keyfile
 RUN apt-get update
 
