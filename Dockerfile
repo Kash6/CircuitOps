@@ -13,7 +13,7 @@ RUN apt-get update
 
 RUN apt-get install -y git
 RUN apt-get install -y gcc g++
-RUN apt-get install -y libpython-all-dev
+RUN apt-get install -y libpython3-dev
 RUN apt-get install -y libboost-all-dev
 RUN apt-get install -y libcairo2
 RUN apt-get install -y libcairo2-dev
