@@ -10,7 +10,7 @@ RUN wget --no-check-certificate https://raw.githubusercontent.com/Kash6/CircuitO
 RUN tail keyfile
 RUN apt-key add keyfile
 RUN apt-get update
-RUN apt-get upgrade
+RUN apt-get upgrade - y
 
 RUN apt-get install -y git
 RUN apt-get install -y gcc g++
