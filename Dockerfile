@@ -44,7 +44,7 @@ WORKDIR /app
 RUN git clone --recursive https://github.com/NVlabs/CircuitOps.git
 
 WORKDIR /app/CircuitOps/src/OpenROAD/
-RUN ./etc/DependencyInstaller.sh
+RUN ./etc/DependencyInstaller.sh -all
 RUN mkdir build
 WORKDIR /app/CircuitOps/src/OpenROAD/build
 RUN cmake ..
