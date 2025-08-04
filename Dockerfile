@@ -23,9 +23,7 @@ RUN apt-get install -y nvidia-cuda-toolkit
 RUN apt-get update 
 
 COPY ./python3-graph-tool_2.71_amd64_jammy.deb.* /tmp/debs/
-RUN cat /tmp/debs/python3-graph-tool_2.71_amd64_jammy.deb.* > /tmp/debs/python3-graph-tool_2.71_amd64_jammy.deb 
-&& dpkg -i /tmp/debs/python3-graph-tool_2.71_amd64_jammy.deb || apt-get install -f -y 
-&& rm -rf /tmp/debs
+RUN cat /tmp/debs/python3-graph-tool_2.71_amd64_jammy.deb.* > /tmp/debs/python3-graph-tool_2.71_amd64_jammy.deb && dpkg -i /tmp/debs/python3-graph-tool_2.71_amd64_jammy.deb || apt-get install -f -y  && rm -rf /tmp/debs
 
 
 RUN apt-get install -y vim
