@@ -20,7 +20,16 @@ RUN apt-get install -y libcairo2
 RUN apt-get install -y libcairo2-dev
 RUN apt-get install -y python3-matplotlib
 RUN apt-get install -y nvidia-cuda-toolkit
-RUN apt-get update && apt-get install -y python3-graph-tool
+RUN apt-get update 
+
+COPY ./debs/python3-graph-tool_2.71_amd64_jammy.deb /tmp/
+
+# Install the .deb package
+RUN dpkg -i /tmp/python3-graph-tool_2.71_amd64_jammy.deb
+
+# Resolve any unmet dependencies
+RUN apt-get update && apt-get install -y -f
+
 
 RUN apt-get install -y vim
 RUN apt-get install -y python3-pip
