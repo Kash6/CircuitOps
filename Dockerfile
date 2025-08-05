@@ -31,6 +31,7 @@ RUN apt-get install -y python3-pip
 
 RUN apt update
 RUN apt install -y libqt5charts5 libqt5charts5-dev
+RUN apt remove cmake -y
 
 RUN pip install --no-cache-dir torch==2.2.0
 RUN pip install cmake --upgrade
