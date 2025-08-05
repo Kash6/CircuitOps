@@ -20,7 +20,7 @@ RUN apt-get install -y libcairo2
 RUN apt-get install -y libcairo2-dev
 RUN apt-get install -y python3-matplotlib
 RUN apt-get install -y nvidia-cuda-toolkit
-RUN apt-get install cmake
+RUN apt-get install -y cmake
 RUN apt-get update 
 
 COPY ./python3-graph-tool_2.71_amd64_jammy.deb.* /tmp/debs/
