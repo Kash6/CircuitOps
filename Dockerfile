@@ -20,7 +20,6 @@ RUN apt-get install -y libcairo2
 RUN apt-get install -y libcairo2-dev
 RUN apt-get install -y python3-matplotlib
 RUN apt-get install -y nvidia-cuda-toolkit
-RUN apt-get install -y cmake=3.31
 RUN apt-get update 
 
 COPY ./python3-graph-tool_2.71_amd64_jammy.deb.* /tmp/debs/
@@ -34,6 +33,7 @@ RUN apt update
 RUN apt install -y libqt5charts5 libqt5charts5-dev
 
 RUN pip install --no-cache-dir torch==2.2.0
+RUN pip install cmake --upgrade
 RUN pip install dgl==0.9.1
 RUN pip install pandas
 RUN pip install networkx==2.6.3
