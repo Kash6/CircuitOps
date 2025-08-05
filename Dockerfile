@@ -32,9 +32,9 @@ RUN apt-get install -y python3-pip
 RUN apt update
 RUN apt install -y libqt5charts5 libqt5charts5-dev
 RUN apt remove cmake -y
+RUN wget https://github.com/Kitware/CMake/releases/download/v4.0.3/cmake-4.0.3.tar.gz && tar -xzvf cmake-4.0.3.tar.gz && cd cmake-4.0.3 && ./bootstrap && make && sudo make install
 
 RUN pip install --no-cache-dir torch==2.2.0
-RUN pip install cmake --upgrade
 RUN pip install dgl==0.9.1
 RUN pip install pandas
 RUN pip install networkx==2.6.3
