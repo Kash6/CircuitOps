@@ -18,6 +18,7 @@ RUN LC_ALL=C cat $(ls /tmp/debs/cmake-3.31.6-linux-x86_64.tar.gz.* | sort) > /tm
 RUN cmake --version | grep 3.31
 RUN ls -l /usr/local/bin/cmake
 RUN ls -l /usr/local/cmake-3.31.6-linux-x86_64/bin/cmake
+RUN env
 
 COPY ./python3-graph-tool_2.71_amd64_jammy.deb.* /tmp/debs/
 RUN cat /tmp/debs/python3-graph-tool_2.71_amd64_jammy.deb.* > /tmp/debs/python3-graph-tool_2.71_amd64_jammy.deb && dpkg -i /tmp/debs/python3-graph-tool_2.71_amd64_jammy.deb || apt-get install -f -y  && rm -rf /tmp/debs
