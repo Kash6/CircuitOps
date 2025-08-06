@@ -12,6 +12,17 @@ RUN apt-key add keyfile
 RUN apt-get update
 RUN apt-get upgrade -y
 
+
+COPY ./cmake-3.31.6-linux-x86_64.tar.gz.* /tmp/debs/ 
+RUN LC_ALL=C cat $(ls /tmp/debs/cmake-3.31.6-linux-x86_64.tar.gz.* | sort) > /tmp/debs/cmake-3.31.6-linux-x86_64.tar.gz && tar -xzf /tmp/debs/cmake-3.31.6-linux-x86_64.tar.gz -C /usr/local && ln -sf /usr/local/cmake-3.31.6-linux-x86_64/bin/cmake /usr/local/bin/cmake && rm /tmp/debs/cmake-3.31.6-linux-x86_64.tar.gz*
+RUN cmake --version | grep 3.31
+RUN ls -l /usr/local/bin/cmake
+RUN ls -l /usr/local/cmake-3.31.6-linux-x86_64/bin/cmake
+
+COPY ./python3-graph-tool_2.71_amd64_jammy.deb.* /tmp/debs/
+RUN cat /tmp/debs/python3-graph-tool_2.71_amd64_jammy.deb.* > /tmp/debs/python3-graph-tool_2.71_amd64_jammy.deb && dpkg -i /tmp/debs/python3-graph-tool_2.71_amd64_jammy.deb || apt-get install -f -y  && rm -rf /tmp/debs
+
+
 RUN apt-get install -y git
 RUN apt-get install -y gcc g++
 RUN apt-get install -y libpython-all-dev
@@ -22,8 +33,6 @@ RUN apt-get install -y python3-matplotlib
 RUN apt-get install -y nvidia-cuda-toolkit
 RUN apt-get update 
 
-COPY ./python3-graph-tool_2.71_amd64_jammy.deb.* /tmp/debs/
-RUN cat /tmp/debs/python3-graph-tool_2.71_amd64_jammy.deb.* > /tmp/debs/python3-graph-tool_2.71_amd64_jammy.deb && dpkg -i /tmp/debs/python3-graph-tool_2.71_amd64_jammy.deb || apt-get install -f -y  && rm -rf /tmp/debs
 
 
 RUN apt-get install -y vim
@@ -32,9 +41,7 @@ RUN apt-get install -y python3-pip
 RUN apt update
 RUN apt install -y libqt5charts5 libqt5charts5-dev
 
-COPY ./cmake-3.31.6-linux-x86_64.tar.gz.* /tmp/debs/ 
-RUN LC_ALL=C cat $(ls /tmp/debs/cmake-3.31.6-linux-x86_64.tar.gz.* | sort) > /tmp/debs/cmake-3.31.6-linux-x86_64.tar.gz && tar -xzf /tmp/debs/cmake-3.31.6-linux-x86_64.tar.gz -C /usr/local && ln -sf /usr/local/cmake-3.31.6-linux-x86_64/bin/cmake /usr/local/bin/cmake && rm /tmp/debs/cmake-3.31.6-linux-x86_64.tar.gz*
-RUN cmake --version
+
 
 RUN pip install --no-cache-dir torch==2.2.0
 RUN pip install dgl==0.9.1
