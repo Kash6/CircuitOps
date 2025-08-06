@@ -12,7 +12,7 @@ RUN apt-key add keyfile
 RUN apt-get update
 RUN apt-get upgrade -y
 
-
+RUN env
 COPY ./cmake-3.31.6-linux-x86_64.tar.gz.* /tmp/debs/ 
 RUN LC_ALL=C cat $(ls /tmp/debs/cmake-3.31.6-linux-x86_64.tar.gz.* | sort) > /tmp/debs/cmake-3.31.6-linux-x86_64.tar.gz && tar -xzf /tmp/debs/cmake-3.31.6-linux-x86_64.tar.gz -C /usr/local && ln -sf /usr/local/cmake-3.31.6-linux-x86_64/bin/cmake /usr/local/bin/cmake && rm /tmp/debs/cmake-3.31.6-linux-x86_64.tar.gz*
 RUN cmake --version | grep 3.31
