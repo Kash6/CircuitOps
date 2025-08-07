@@ -14,7 +14,8 @@ RUN apt-get upgrade -y
 
 RUN env
 COPY ./cmake-3.31.6-linux-x86_64.tar.gz.* /tmp/debs/ 
-RUN LC_ALL=C cat $(ls /tmp/debs/cmake-3.31.6-linux-x86_64.tar.gz.* | sort) > /tmp/debs/cmake-3.31.6-linux-x86_64.tar.gz && tar -xzf /tmp/debs/cmake-3.31.6-linux-x86_64.tar.gz -C /usr/local && cp /usr/local/cmake-3.31.6-linux-x86_64/bin/cmake /usr/local/bin/cmake && chmod +x /usr/local/bin/cmake && rm -rf /tmp/debs/cmake-3.31.6-linux-x86_64.tar.gz* && export CMAKE_ROOT="/usr/local/cmake-3.31.6-linux-x86_64/share/cmake-3.31"
+RUN LC_ALL=C cat $(ls /tmp/debs/cmake-3.31.6-linux-x86_64.tar.gz.* | sort) > /tmp/debs/cmake-3.31.6-linux-x86_64.tar.gz && tar -xzf /tmp/debs/cmake-3.31.6-linux-x86_64.tar.gz -C /usr/local && cp /usr/local/cmake-3.31.6-linux-x86_64/bin/cmake /usr/local/bin/cmake && chmod +x /usr/local/bin/cmake && rm -rf /tmp/debs/cmake-3.31.6-linux-x86_64.tar.gz*
+ENV CMAKE_ROOT=/usr/local/cmake-3.31.6-linux-x86_64/share/cmake-3.31
 RUN cmake --version | grep 3.31
 RUN ls -l /usr/local/bin/cmake
 RUN env
