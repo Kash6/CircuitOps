@@ -13,10 +13,10 @@ RUN apt-get update
 RUN apt-get upgrade -y
 
 RUN env
-COPY ./cmake-3.31.6-linux-x86_64.tar.gz.* /tmp/debs/ 
-RUN LC_ALL=C cat $(ls /tmp/debs/cmake-3.31.6-linux-x86_64.tar.gz.* | sort) > /tmp/debs/cmake-3.31.6-linux-x86_64.tar.gz && tar -xzf /tmp/debs/cmake-3.31.6-linux-x86_64.tar.gz -C /usr/local && cp /usr/local/cmake-3.31.6-linux-x86_64/bin/cmake /usr/local/bin/cmake && chmod +x /usr/local/bin/cmake && mv /usr/local/cmake-3.31.6-linux-x86_64/share/cmake-3.31 /usr/local/share/ && rm -rf /usr/local/cmake-3.31.6-linux-x86_64 /tmp/debs/cmake-3.31.6-linux-x86_64.tar.gz*
-ENV CMAKE_ROOT=/usr/local/share/cmake-3.31
-RUN cmake --version | grep 3.31
+COPY ./cmake-3.24.2-linux-x86_64.tar.gz.* /tmp/debs/ 
+RUN LC_ALL=C cat $(ls /tmp/debs/cmake-3.24.2-linux-x86_64.tar.gz.* | sort) > /tmp/debs/cmake-3.24.2-linux-x86_64.tar.gz && tar -xzf /tmp/debs/cmake-3.24.2-linux-x86_64.tar.gz -C /usr/local && cp /usr/local/cmake-3.24.2-linux-x86_64/bin/cmake /usr/local/bin/cmake && chmod +x /usr/local/bin/cmake && mv /usr/local/cmake-3.24.2-linux-x86_64/share/cmake-3.24 /usr/local/share/ && rm -rf /usr/local/cmake-3.24.2-linux-x86_64 /tmp/debs/cmake-3.24.2-linux-x86_64.tar.gz*
+ENV CMAKE_ROOT=/usr/local/share/cmake-3.24
+RUN cmake --version | grep 3.24
 RUN ls -l /usr/local/bin/cmake
 RUN env
 
