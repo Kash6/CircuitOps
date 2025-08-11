@@ -12,6 +12,8 @@ RUN apt-key add keyfile
 RUN apt-get update
 RUN apt-get upgrade -y
 
+RUN curl https://artifactory.intra.infineon.com/artifactory/gen-boost/release/1.86.0/source/boost_1_86_0.tar.gz && tar -xf boost_1_86_0.tar.gz -C /tmp  && cd /tmp/boost_1_86_0  && ./bootstrap.sh --prefix=/usr/local && ./b2 install --with-iostreams --with-test --with-serialization --with-system --with-thread -j $(nproc)
+
 RUN env
 COPY ./cmake-3.24.2-linux-x86_64.tar.gz.* /tmp/debs/ 
 RUN LC_ALL=C cat $(ls /tmp/debs/cmake-3.24.2-linux-x86_64.tar.gz.* | sort) > /tmp/debs/cmake-3.24.2-linux-x86_64.tar.gz && tar -xzf /tmp/debs/cmake-3.24.2-linux-x86_64.tar.gz -C /usr/local && cp /usr/local/cmake-3.24.2-linux-x86_64/bin/cmake /usr/local/bin/cmake && chmod +x /usr/local/bin/cmake && mv /usr/local/cmake-3.24.2-linux-x86_64/share/cmake-3.24 /usr/local/share/ && rm -rf /usr/local/cmake-3.24.2-linux-x86_64 /tmp/debs/cmake-3.24.2-linux-x86_64.tar.gz*
