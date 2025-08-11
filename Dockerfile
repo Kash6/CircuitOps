@@ -12,7 +12,6 @@ RUN apt-key add keyfile
 RUN apt-get update
 RUN apt-get upgrade -y
 
-RUN wget https://artifactory.intra.infineon.com/artifactory/gen-boost/release/1.86.0/source/boost_1_86_0.tar.gz && tar -xf boost_1_86_0.tar.gz -C /tmp  && cd /tmp/boost_1_86_0  && ./bootstrap.sh --with-toolset=gcc --prefix=/usr/local && ./b2 install --with-iostreams --with-test --with-serialization --with-system --with-thread -j $(nproc)
 
 RUN env
 COPY ./cmake-3.24.2-linux-x86_64.tar.gz.* /tmp/debs/ 
@@ -36,7 +35,7 @@ RUN apt-get install -y python3-matplotlib
 RUN apt-get install -y nvidia-cuda-toolkit
 RUN apt-get update 
 
-
+RUN wget https://artifactory.intra.infineon.com/artifactory/gen-boost/release/1.86.0/source/boost_1_86_0.tar.gz && tar -xf boost_1_86_0.tar.gz -C /tmp  && cd /tmp/boost_1_86_0  && ./bootstrap.sh --with-toolset=gcc --prefix=/usr/local && ./b2 install --with-iostreams --with-test --with-serialization --with-system --with-thread -j $(nproc)
 
 RUN apt-get install -y vim
 RUN apt-get install -y python3-pip
