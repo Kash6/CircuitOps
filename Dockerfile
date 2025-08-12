@@ -61,7 +61,7 @@ RUN ./etc/DependencyInstaller.sh -all
 RUN mkdir build
 WORKDIR /app/CircuitOps/src/OpenROAD/build
 RUN cmake ..
-RUN make -j
+RUN make -j4
 
 WORKDIR /app
 
