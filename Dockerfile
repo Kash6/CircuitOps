@@ -64,7 +64,6 @@ RUN cmake ..
 RUN make -j4
 
 WORKDIR /app
-
-
 COPY . /app
+RUN chmod -R g+rwx /app
 CMD ["sleep", "infinity"]
