@@ -67,3 +67,4 @@ WORKDIR /app
 
 
 COPY . /app
+CMD ["sleep", "infinity"]
